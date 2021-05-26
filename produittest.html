@@ -9,8 +9,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
 
     <link rel="icon" type="image/png" sizes="16x16" href="images/logotab.png">
-    <script src="pageproduit.js" defer></script>
-    
+    <script src="ajoutpanier.js" defer></script>
  
     <title>Orinoco - page produit</title>
 </head>
@@ -43,6 +42,9 @@
             <!--<strong>Orinoco</strong>-->
             <img src="images/orinoco.png" alt="logo Orinoco" height="50" fill="none" stroke="currentColor" stroke-linecap="round"/>
           </a>
+          <div class="col-sm-4 offset-md-1 py-4">
+            <h4 class="text-black panier">Panier <span>0</span></h4>
+        </div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -55,7 +57,60 @@
 
       <hr class="featurette-divider">
 
-      <div class="row featurette margin-left margin-right" id="article"></div>
+      <div class="row featurette margin-left margin-right" id="article">
+        <div class="col-md-7">
+            <h2 class="featurette-heading">babouche</h2>
+            
+            <p class="lead">super chaussures</p>
+            <p class="lead">2€</p>
+            
+            <div class="col-md-5">
+              <label for="couleur" class="form-label">Couleur</label>
+              <select class="form-select" id="colors" required>
+                <option value="">Couleur</option>
+                <option>vert canard</option>
+                <option>rose pailleté</option>
+
+              </select>
+              <div class="invalid-feedback">
+                Veuillez choisir une couleur.
+              </div>
+              <a href="#" class="btn my-2 add-cart">Ajouter au panier</a>
+            </div>
+          
+          </div>
+          <div class="col-md-5">
+            <img id="imageUrl" class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" src="images/vcam_1.jpg"/>
+          </div>
+
+          <div class="row featurette margin-left margin-right" id="article">
+            <div class="col-md-7">
+                <h2 class="featurette-heading">sabot</h2>
+                
+                <p class="lead">chaussure qui fait mal aux pieds</p>
+                <p class="lead">8,50€</p>
+                
+                <div class="col-md-5">
+                  <label for="couleur" class="form-label">Couleur</label>
+                  <select class="form-select" id="colors" required>
+                    <option value="">Couleur</option>
+                    <option>kaki</option>
+                    <option>turquoise</option>
+                  </select>
+                  <div class="invalid-feedback">
+                    Veuillez choisir une couleur.
+                  </div>
+                  <a href="#" class="btn my-2 add-cart">Ajouter au panier</a>
+                </div>
+              
+              </div>
+              <div class="col-md-5">
+                <img id="imageUrl" class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" src="images/oak_5.jpg"/>
+              </div>
+      
+          <hr class="featurette-divider">
+          </div>
+      </div>
 
     </main>
 
