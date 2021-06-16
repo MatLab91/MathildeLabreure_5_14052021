@@ -11,6 +11,8 @@
 
     <link rel="icon" type="image/png" sizes="16x16" href="images/logotab.png">
 
+    <script src="pageconfirmation.js" defer=""></script>
+
     <title>Orinoco - Confirmation de commande</title>
 </head>
 
@@ -38,7 +40,7 @@
       </div>
       <div class="navbar couleur-principale" > <!--navbar-dark bg-dark shadow-sm -->
         <div class="container">
-          <a href="#" class="navbar-brand d-flex align-items-center">
+          <a href="index.html" class="navbar-brand d-flex align-items-center">
             <!--<strong>Orinoco</strong>-->
             <img src="images/orinoco.png" alt="logo Orinoco" height="50" fill="none" stroke="currentColor" stroke-linecap="round"/>
           </a>
@@ -58,7 +60,7 @@
         </div>
         <div class="col-lg-6">
           <h1 class="display-5 fw-bold lh-1 mb-3">Orinoco vous remercie pour votre achat !</h1>
-          <p class="lead">Nous avons bien enregistré votre commande n°ID COMMANDE pour un montant total de ID TOTAL.
+          <p class="lead">Nous avons bien enregistré votre commande n°<strong id="commandId"></strong>, pour un montant total de <strong id="totalCostConfirmation"></strong>.
             Vous pouvez retrouver le détail de votre commande dans votre espace client ou dans le mail de confirmation que nous venons de vous envoyer.
             À bientôt sur Orinoco !</p>
           <div class="d-grid gap-2 d-md-flex justify-content-md-start">

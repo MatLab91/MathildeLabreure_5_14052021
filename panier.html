@@ -10,7 +10,6 @@
 
     <link rel="icon" type="image/png" sizes="16x16" href="images/logotab.png">
 
-    <script src="pagepanier.js" defer></script>
 
     <style>
       .bd-placeholder-img {
@@ -60,10 +59,14 @@
       </div>
       <div class="navbar couleur-principale" > <!--navbar-dark bg-dark shadow-sm -->
         <div class="container">
-          <a href="#" class="navbar-brand d-flex align-items-center">
+          <a href="index.html" class="navbar-brand d-flex align-items-center">
             <!--<strong>Orinoco</strong>-->
             <img src="images/orinoco.png" alt="logo Orinoco" height="50" fill="none" stroke="currentColor" stroke-linecap="round"/>
           </a>
+          <a href="panier.html" class="panier">
+            <i class="fas fa-shopping-basket"></i>
+            Panier <span>0</span>
+        </a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -83,130 +86,88 @@
         <div class="col-md-5 col-lg-4 order-md-last">
           <h4 class="d-flex justify-content-between align-items-center mb-3">
             <span class="text-primary">Votre panier</span>
-            <span class="badge bg-primary rounded-pill">NOMBRE ARTICLE</span>
+            <span class="badge bg-primary rounded-pill product-quantity">Total nombre d'articles: 
+              <span class="nombre_article"></span>
+            </span>
           </h4>
+          <p class="d-flex justify-content-between align-items-center mb-3">
+            <span class="w-25">Produit</span>
+            <span class="text-center w-25">Quantité</span>
+            <span class="text-center w-25">Prix Unitaire</span>
+            <span class="text-center w-25">Total par produit</span>
+          </p>
 
           <ul class="list-group mb-3">
 
-            <li class="list-group-item d-flex justify-content-between lh-sm" id="article_panier">
-
+            <li class="products">
             </li>
-            <li class="list-group-item d-flex justify-content-between lh-sm">
+            <!--<li class="list-group-item d-flex justify-content-between lh-sm">
               <div>
                 <h6 class="my-0">NOM DU PRODUIT</h6>
                 <small class="text-muted">DESCRIPTION DU PRODUIT</small>
               </div>
               <span class="text-muted">PRIX PRODUIT</span>
-            </li>
-            <li class="list-group-item d-flex justify-content-between lh-sm">
-              <div>
-                <h6 class="my-0">NOM DU PRODUIT</h6>
-                <small class="text-muted">DESCRIPTION DU PRODUIT</small>
-              </div>
-              <span class="text-muted">PRIX PRODUIT</span>
-            </li>
-            <li class="list-group-item d-flex justify-content-between lh-sm">
-              <div>
-                <h6 class="my-0">NOM DU PRODUIT</h6>
-                <small class="text-muted">DESCRIPTION DU PRODUIT</small>
-              </div>
-              <span class="text-muted">PRIX PRODUIT</span>
-            </li>
+            </li> -->
            
             <li class="list-group-item d-flex justify-content-between">
               <span>Prix total</span>
-              <strong>TOTAL PANIER</strong>
+              <strong class="total"></strong>
             </li>
           </ul>
   
-          <form class="card p-2">
-            <div class="input-group">
-            <input type="text" class="form-control" placeholder="Promo code">
-            <button type="submit" class="btn btn-secondary">Utiliser</button>
-            </div>
-          </form>
         </div>
         <div class="col-md-7 col-lg-8">
-          <h4 class="mb-3">Adresse de facturation</h4>
-          <form class="needs-validation" novalidate>
+          <h4 class="mb-3">Informations de contact</h4>
+
+          <form class="needs-validation" id="form" name="myForm" method="POST" novalidate>
+
             <div class="row g-3">
+
               <div class="col-sm-6">
                 <label for="firstName" class="form-label">Prénom</label>
-                <input type="text" id="hello" pattern="^[a-zA-Z]+$" class="form-control" id="firstName" placeholder="Prénom" value="" required>
-                <div class="invalid-feedback">
-                  Le champ prénom est obligatoire.
-                </div>
+                <input type="text" id="fname"  class="form-control" placeholder="Prénom">
               </div>
-  
+
               <div class="col-sm-6">
-                <label for="lastName" class="form-label">Nom de famille</label>
-                <input type="text" class="form-control" id="lastName" placeholder="Nom de famille" value="" required>
-                <div class="invalid-feedback">
-                  Le champ nom de famille est obligatoire.
-                </div>
+                <label for="lastName" class="form-label">Nom</label>
+                <input type="text" id="flastname"  class="form-control" placeholder="Nom">
               </div>
-  
-              <div class="col-12">
-                <label for="username" class="form-label">Nom d'utilisateur</label>
-                <div class="input-group has-validation">
-                  <span class="input-group-text">@</span>
-                  <input type="text" class="form-control" id="username" placeholder="Nom d'utilisateur" required>
-                <div class="invalid-feedback">
-                    Le champ nom d'utilisateur est obligatoire.
-                  </div>
-                </div>
-              </div>
-  
+
               <div class="col-12">
                 <label for="email" class="form-label">Email</label>
-                <input type="email" class="form-control" id="email" placeholder="jean.dupont@exemple.com">
-                <div class="invalid-feedback">
-                  Merci de renseigner votre adresse e-mail afin de vous tenir informé(e) de la livraison.
-                </div>
+                <input type="email" id="femail"  class="form-control" placeholder="jean.dupont@exemple.com">
               </div>
-  
+
               <div class="col-12">
-                <label for="address" class="form-label">Addresse de livraison</label>
-                <input type="text" class="form-control" id="address" placeholder="8 rue des Lilas" required>
-                <div class="invalid-feedback">
-                  Merci de renseigner votre adresse de livraison.
-                </div>
+                <label for="address" class="form-label">Adresse de livraison</label>
+                <input type="text" id="faddress"  class="form-control" placeholder="8 rue des Lilas">
               </div>
-  
-  
+
               <div class="col-md-5">
                 <label for="country" class="form-label">Pays</label>
-                <select class="form-select" id="country" required>
+                <select class="form-select" id="fcountry">
                   <option value="">Choisir</option>
                   <option>France</option>
+                  <option>Espagne</option>
+                  <option>Italie</option>
                 </select>
-                <div class="invalid-feedback">
-                  Veuillez choisir un pays.
-                </div>
               </div>
-  
+
               <div class="col-md-4">
                 <label for="city" class="form-label">Ville</label>
-                <select class="form-select" id="city" required>
+                <select class="form-select" id="fcity">
                   <option value="">Choisir</option>
                   <option>Paris</option>
                   <option>Linas</option>
                   <option>Grand Vabre</option>
                   <option>Taussat</option>
                 </select>
-                <div class="invalid-feedback">
-                  Veuillez choisir une ville.
-                </div>
               </div>
-  
+
               <div class="col-md-3">
                 <label for="zip" class="form-label">Code postal</label>
-                <input type="text" class="form-control" id="zip" placeholder="75000" required>
-                <div class="invalid-feedback">
-                  Veuillez renseigner un code postal.
-                </div>
+                <input type="text" class="form-control" id="fzip" placeholder="75000" required pattern="[0-9]{5}">
               </div>
-            </div>
   
             <hr class="my-4">
   
@@ -272,7 +233,7 @@
   
             <hr class="my-4">
   
-            <button class="w-100 btn btn-primary btn-lg" type="submit">Valider la commande</button>
+            <input class="w-100 btn btn-primary btn-lg" type="submit" value="Valider la commande"></input>
           </form>
         </div>
       </div>
@@ -307,6 +268,8 @@
     </footer>
 
  
+    <script src="pageproduit_test.js" defer></script>
+    <script src="pagepanier.js" defer></script>
 
     
 

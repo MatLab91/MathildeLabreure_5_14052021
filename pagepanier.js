@@ -1,95 +1,110 @@
-
 //////////////////
 // PAGE PANIER //
 //////////////////
 
+document.querySelector('#form').addEventListener('submit', function validateForm(event) {
+    event.preventDefault();
+    if (validateFormOrder()) {
 
-// Affichage du produit validé par l'acheteur dans le panier
+        let cartItems = localStorage.getItem("productsInCart");
+        cartItems = JSON.parse(cartItems);
 
-const queryString = window.location.search; //récupère infos de l'url
-const urlParams = new URLSearchParams(queryString); //objet qui represente paramètre url
-const productId = urlParams.get("id"); //récupère la valeur d'un paramètre
-console.log(productId);
-
-// NOUNOURS
-
-fetch("http://localhost:3000/api/teddies")
-    .then((resp) => resp.json())
-    .then(function (products) {
-        console.log(products);
-
-        
-        products.forEach((item) => {
-            if (productId == item._id) {
-                const html2 = `<div>
-                <h6 class="my-0">${item.name}</h6>
-              </div>
-              <span class="text-muted">${item.price}€</span>`
-
-                const article_panier = document.querySelector('#article_panier');
-                article_panier.innerHTML += html2;
-            }
+        const order = {
+            contact: {
+                firstName: document.querySelector('#fname').value,
+                lastName: document.querySelector('#flastname').value,
+                address: document.querySelector('#faddress').value + ' ' + document.querySelector('#fzip').value,
+                city: document.querySelector('#fcity').value,
+                email: document.querySelector('#femail').value,
+            },
+            products: Object.keys(cartItems),
         }
-        )
-    }
-    )
-
-// MEUBLES
-
-fetch("http://localhost:3000/api/furniture")
-    .then((resp) => resp.json())
-    .then(function (products) {
-        console.log(products);
-
-        
-        products.forEach((item) => {
-            if (productId == item._id) {
-                const html2 = `<div>
-                <h6 class="my-0">${item.name}</h6>
-              </div>
-              <span class="text-muted">${item.price}€</span>`
-
-                const article_panier = document.querySelector('#article_panier');
-                article_panier.innerHTML += html2;
-            }
+        console.log(order);
+        const requestOptions = {
+            method: 'POST',
+            body: JSON.stringify(order),
+            headers: { 'Content-Type': 'application/json; charset=utf-8' },
         }
-        )
+
+        const categorie = localStorage.getItem("categorie");
+        fetch("http://localhost:3000/api/"+categorie+"/order", requestOptions)
+            .then((response) => response.json())
+            .then((resultData) => {
+                console.log(resultData);
+                localStorage.removeItem('productsInCart');
+                localStorage.removeItem('nombre_articles_ajoutes');
+                localStorage.removeItem('categorie');
+                localStorage.setItem("totalCostConfirmation", localStorage.getItem("totalCost"));
+                localStorage.removeItem('totalCost');
+                window.location.href = `confirmation.html?orderId=${resultData.orderId}`
+            })
+            .catch(() => {
+                alert(error)
+            })
     }
-    )
+})
 
+function validateFormOrder() {
+    let myRegexText = /^[a-zA-Z-\s]+$/;
+    let myRegexEmail = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/;
+    let myRegexAddress = /^[0-9]+[a-zA-Z,\.\s]+/;
+    // let myRegexZip = /^[0-9]{5}(-[0-9]{4})?/;
 
-// CAMERAS
-
-fetch("http://localhost:3000/api/cameras")
-    .then((resp) => resp.json())
-    .then(function (products) {
-        console.log(products);
-
-        
-        products.forEach((item) => {
-            if (productId == item._id) {
-                const html2 = `<div>
-                <h6 class="my-0">${item.name}</h6>
-              </div>
-              <span class="text-muted">${item.price}€</span>`
-
-                const article_panier = document.querySelector('#article_panier');
-                article_panier.innerHTML += html2;
-            }
-        }
-        )
+    var name = document.querySelector('#fname').value;
+    if (name == "") {
+        alert("Le prénom doit être renseigné.");
+        return false;
+    } else if (myRegexText.test(name) == false) {
+        alert("Le prénom ne peut comporter que des lettres.");
+        return false;
     }
-    )
 
-
-// Validation des données saisies par l'utilisateur
-
-/*const myInput = document.querySelector('#hello')
-myInput.addEventListener('change', function(e) {
-    var value = e.target.value;
-    if (value.startsWith('Hello ')) {
-        isValid = true;
-    } else {
-        isValid = false;
+    var lastName = document.querySelector('#flastname').value;
+    if (lastName == "") {
+        alert("Le nom doit être renseigné.");
+        return false;
+    } else if (myRegexText.test(lastName) == false) {
+        alert("Le nom ne peut comporter que des lettres.");
+        return false;
     }
-});*/
+
+    var email = document.querySelector('#femail').value;
+    if (email == "") {
+        alert("L'adresse email doit être renseignée, afin de vous tenir informé(e) de la livraison.");
+        return false;
+    } else if (myRegexEmail.test(email) == false) {
+        alert("L'adresse email n'est pas valide.");
+        return false;
+    }
+
+    var address = document.querySelector('#faddress').value;
+    if (address == "") {
+        alert("L'adresse de livraison doit être renseignée.");
+        return false;
+    } else if (myRegexAddress.test(address) == false) {
+        alert("L'adresse de livraison n'est pas valide.");
+        return false;
+    }
+
+    var country = document.querySelector('#fcountry').value;
+    if (country == "") {
+        alert("Le pays doit être renseigné.");
+        return false;
+    }
+
+    var city = document.querySelector('#fcity').value;
+    if (city == "") {
+        alert("La ville doit être renseignée.");
+        return false;
+    }
+
+    var zip = document.querySelector('#fzip').value;
+    if (zip == "") {
+        alert("Le code postal doit être renseigné.");
+        return false;
+    } else if (isNaN(zip)) {
+        alert("Le code postal n'est pas valide. Il doit uniquement comporter des chiffres sans espace.");
+        return false;
+    }
+    return true;
+}

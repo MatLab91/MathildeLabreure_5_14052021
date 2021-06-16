@@ -27,5 +27,8 @@
 #id_article {
   display: none;
 }
+li {
+  list-style-type: none;
+}
 
 /*# sourceMappingURL=style.css.map */
