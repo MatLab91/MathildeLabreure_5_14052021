@@ -2,7 +2,6 @@
 //////////////////
 // PAGE PRODUIT //
 //////////////////
-console.log("ca fonctionne")
 let product = null;
 let categorie = "";
 

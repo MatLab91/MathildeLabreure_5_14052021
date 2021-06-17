@@ -108,3 +108,20 @@ function validateFormOrder() {
     }
     return true;
 }
+
+
+var deleteButton = document.getElementById('deleteButton');
+let productsContainer = document.querySelector(".products");
+let cartCost = localStorage.getItem("totalCost");
+
+deleteButton.addEventListener('click', function () {   
+    localStorage.removeItem('productsInCart');
+    localStorage.removeItem('nombre_articles_ajoutes');
+    localStorage.removeItem('categorie');
+    localStorage.removeItem('totalCost');
+    productsContainer.innerHTML = '';
+    cartCost.innerHTML = '';
+    document.querySelector('.panier span').innerHTML = '';
+    document.querySelector(".nombre_article").innerHTML = '';
+    document.querySelector(".total").innerHTML = '';
+})

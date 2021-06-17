@@ -9,7 +9,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
 
     <link rel="icon" type="image/png" sizes="16x16" href="images/logotab.png">
-
+    <script src="https://kit.fontawesome.com/d3cb59a053.js" crossorigin="anonymous"></script>
 
     <style>
       .bd-placeholder-img {
@@ -86,15 +86,16 @@
         <div class="col-md-5 col-lg-4 order-md-last">
           <h4 class="d-flex justify-content-between align-items-center mb-3">
             <span class="text-primary">Votre panier</span>
+            <span class="badge bg-primary rounded-pill cursor-pointer" id="deleteButton">Vider le panier</span>
             <span class="badge bg-primary rounded-pill product-quantity">Total nombre d'articles: 
               <span class="nombre_article"></span>
             </span>
           </h4>
           <p class="d-flex justify-content-between align-items-center mb-3">
-            <span class="w-25">Produit</span>
-            <span class="text-center w-25">Quantité</span>
-            <span class="text-center w-25">Prix Unitaire</span>
-            <span class="text-center w-25">Total par produit</span>
+            <span class="w-20 small">Produit</span>
+            <span class="text-center w-20 small">Quantité</span>
+            <span class="text-center w-20 small">Prix Unitaire</span>
+            <span class="text-left w-20 small">Total par produit</span>
           </p>
 
           <ul class="list-group mb-3">
