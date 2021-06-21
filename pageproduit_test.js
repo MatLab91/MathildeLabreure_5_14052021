@@ -1,7 +1,7 @@
-
 //////////////////
 // PAGE PRODUIT //
 //////////////////
+
 let product = null;
 let categorie = "";
 
@@ -10,14 +10,12 @@ const urlParams = new URLSearchParams(queryString); //objet qui represente param
 const productId = urlParams.get("id"); //récupère la valeur d'un paramètre
 
 
-
+//Appelle l'API afin d'afficher le produit demandé par l'utilisateur sur la page d'accueil (index.html)
 function findProduct(url, textOption, option) {
 
   fetch("http://localhost:3000/api/"+url)
   .then((resp) => resp.json())
   .then(function (products) {
-
-//code pour demander à l'API le produit à afficher
 
     products.forEach((item) => {
       if (productId == item._id) {
@@ -45,14 +43,13 @@ function findProduct(url, textOption, option) {
             <p class="${classDisplayText}">Vous avez déjà ajouté un produit d'une autre catégorie.</p>
             <a href="panier.html" class="btn my-2">Voir mon panier</a>
           </div>
-        
         </div>
+        
         <div class="col-md-5">
-          <img id="imageUrl" class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" src="${item.imageUrl}"/>
+            <img id="imageUrl" class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" src="${item.imageUrl}"/>
         </div>
     
-        <hr class="featurette-divider">
-      </div>`
+        <hr class="featurette-divider">`
 
         const article = document.querySelector('#article');
         article.innerHTML += html1;
@@ -68,9 +65,7 @@ findProduct("furniture", "vernis", "varnish");
 findProduct("cameras", "lentilles", "lenses");
 
 
-
-
-//le panier s'affiche correctement même si page rafraîchie
+// Le panier dans la barre de navigation s'affiche avec le bon nombre d'articles ajoutés même si on rafraîchie la page
 function chargementDuPanier () {
   let nombreDeProduits = localStorage.getItem('nombre_articles_ajoutes');
 
@@ -79,7 +74,8 @@ function chargementDuPanier () {
   }
 }
 
-// mettre des articles dans le panier et savoir combien il y en a
+// A l'ajout d'un produit dans le panier, 'nombre_articles_ajoutes' est incrémenté de 1 dans le local storage
+// La fonction affiche aussi le nombre d'article dans le panier, dans la barre de navigation.
 function ajoutAuPanier () {
   let nombreDeProduits = localStorage.getItem('nombre_articles_ajoutes');
 
@@ -95,8 +91,7 @@ function ajoutAuPanier () {
   definieArticle();
 }
 
-// mettre un article dans le panier et savoir ce que c'est
-
+// A l'ajout d'un article dans le panier, une variable est crée dans le local storage avec les spécificités des produits ajoutés
 function definieArticle() {
   localStorage.setItem("categorie", categorie);
   let cartItems = localStorage.getItem("productsInCart");
@@ -146,20 +141,18 @@ function definieArticle() {
   console.log(cartItems);
   console.log(product);
   localStorage.setItem("productsInCart", JSON.stringify(cartItems));
-  //window.location.href = 'panier.html';
 }
 
+// Lorsque l'utilisateur clique sur le bouton ajouter au panier, l'article est ajouté au panier avec la fonction ajoutAuPanier
 document.addEventListener('click', function (event) {
-  //event.preventDefault();
   const element = event.target;
   if (element.tagName == 'A' && element.classList.contains("add-cart")) {
-    //definieArticle();
     ajoutAuPanier();
     totalCost();
   }
 });
 
-
+// Permet de calculer le prix total de tous les articles ajoutés au panier, dans le local storage
 function totalCost(){
   let cartCost = localStorage.getItem("totalCost");
 
@@ -171,8 +164,20 @@ function totalCost(){
   }
 }
 
+// enlève le bouton "Ajouter au panier" sur la page produit, 
+// quand l'utilisateur a déjà ajouté dans son panier un produit d'une autre catégorie
+function undisplayCartButton() {
+  const categorieCart = localStorage.getItem("categorie");
+  if (categorieCart != null && categorieCart != categorie) {
+    return "d-none";
+  }
+  return "";
+}
+
+
 // PAGE PANIER
 
+// Permet d'afficher pour chaque produit, un ligne descriptive sur la page panier
 function displayCart() {
   let cartItems = localStorage.getItem("productsInCart");
   let nombreDeProduits= 0;
@@ -204,14 +209,6 @@ function displayCart() {
       document.querySelector(".total").innerHTML = parseInt(cartCost)/100 + ",00€";
       document.querySelector(".nombre_article").innerHTML = nombreDeProduits;
   } 
-}
-
-function undisplayCartButton() {
-  const categorieCart = localStorage.getItem("categorie");
-  if (categorieCart != null && categorieCart != categorie) {
-    return "d-none";
-  }
-  return "";
 }
 
 chargementDuPanier();

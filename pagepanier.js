@@ -2,6 +2,9 @@
 // PAGE PANIER //
 //////////////////
 
+// La fonction vérifie que l'utilisateur a bien rempli le formulaire avec les valeurs attendues. 
+// Si ces valeurs sont conformes, alors les informations du formulaire et des produits du panier sont alors envoyés au serveur.
+// Une fois ces informations envoyées, la fonction supprime les variables dans le local storage.
 document.querySelector('#form').addEventListener('submit', function validateForm(event) {
     event.preventDefault();
     if (validateFormOrder()) {
@@ -27,7 +30,7 @@ document.querySelector('#form').addEventListener('submit', function validateForm
         }
 
         const categorie = localStorage.getItem("categorie");
-        fetch("http://localhost:3000/api/"+categorie+"/order", requestOptions)
+        fetch("http://localhost:3000/api/" + categorie + "/order", requestOptions)
             .then((response) => response.json())
             .then((resultData) => {
                 console.log(resultData);
@@ -109,12 +112,12 @@ function validateFormOrder() {
     return true;
 }
 
-
+// La fonction permet de supprimer les articles ajoutés au panier en cliquant sur le bouton "Vider mon panier"
 var deleteButton = document.getElementById('deleteButton');
 let productsContainer = document.querySelector(".products");
 let cartCost = localStorage.getItem("totalCost");
 
-deleteButton.addEventListener('click', function () {   
+deleteButton.addEventListener('click', function deleteButton() {
     localStorage.removeItem('productsInCart');
     localStorage.removeItem('nombre_articles_ajoutes');
     localStorage.removeItem('categorie');
