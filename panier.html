@@ -1,15 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <link rel="stylesheet" href="style.css" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0"
+      crossorigin="anonymous"
+    />
 
-    <link rel="icon" type="image/png" sizes="16x16" href="images/logotab.png">
-    <script src="https://kit.fontawesome.com/d3cb59a053.js" crossorigin="anonymous"></script>
+    <link rel="icon" type="image/png" sizes="16x16" href="images/logotab.png" />
+    <script
+      src="https://kit.fontawesome.com/d3cb59a053.js"
+      crossorigin="anonymous"
+    ></script>
 
     <style>
       .bd-placeholder-img {
@@ -23,7 +31,7 @@
         max-width: 960px;
       }
       main {
-        margin: 5%;
+        margin: 3%;
       }
       @media (min-width: 768px) {
         .bd-placeholder-img-lg {
@@ -33,18 +41,23 @@
     </style>
 
     <title>Orinoco - Panier client</title>
-</head>
+  </head>
 
-
-<body>
-
+  <body>
     <header>
       <div class="collapse couleur-principale" id="navbarHeader">
         <div class="container">
           <div class="row">
             <div class="col-sm-8 col-md-7 py-4">
               <h4 class="text-black">À propos</h4>
-              <p class="text-muted">Orinoco est une entreprise française de commerce en ligne. Le site a été fondé en 1998 par Paul. Initialement spécialisée dans la vente de CD et DVD d'occasion, la société a depuis élargi son offre et revendique aujourd'hui plus de 100 millions de produits référencés proposés à la vente dans les univers de la maison, du high-tech, du loisir et de la mode.</p>
+              <p class="text-muted">
+                Orinoco est une entreprise française de commerce en ligne. Le
+                site a été fondé en 1998 par Paul. Initialement spécialisée dans
+                la vente de CD et DVD d'occasion, la société a depuis élargi son
+                offre et revendique aujourd'hui plus de 100 millions de produits
+                référencés proposés à la vente dans les univers de la maison, du
+                high-tech, du loisir et de la mode.
+              </p>
             </div>
             <div class="col-sm-4 offset-md-1 py-4">
               <h4 class="text-black">Contact</h4>
@@ -57,37 +70,57 @@
           </div>
         </div>
       </div>
-      <div class="navbar couleur-principale" > <!--navbar-dark bg-dark shadow-sm -->
+      <div class="navbar couleur-principale">
+        <!--navbar-dark bg-dark shadow-sm -->
         <div class="container">
           <a href="index.html" class="navbar-brand d-flex align-items-center">
             <!--<strong>Orinoco</strong>-->
-            <img src="images/orinoco.png" alt="logo Orinoco" height="50" fill="none" stroke="currentColor" stroke-linecap="round"/>
+            <img src="images/orinoco.png" alt="logo Orinoco" height="50" />
           </a>
           <a href="panier.html" class="panier">
             <i class="fas fa-shopping-basket"></i>
             Panier <span>0</span>
-        </a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+          </a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarHeader"
+            aria-controls="navbarHeader"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
             <span class="navbar-toggler-icon"></span>
           </button>
         </div>
       </div>
     </header>
 
-
     <main>
       <div class="py-5 text-center">
-        <img class="d-block mx-auto mb-4 hero-image" src="images/orinoco.png" alt="logo orinoco" height="75">
+        <img
+          class="d-block mx-auto mb-4 hero-image"
+          src="images/orinoco.png"
+          alt="logo orinoco"
+          height="75"
+        />
         <h2>Votre panier</h2>
-        <p class="lead">Veuillez remplir les champs ci-dessous afin de passer commande.</p>
+        <p class="lead">
+          Veuillez remplir les champs ci-dessous afin de passer commande.
+        </p>
       </div>
-  
+
       <div class="row g-5">
         <div class="col-md-5 col-lg-4 order-md-last">
           <h4 class="d-flex justify-content-between align-items-center mb-3">
             <span class="text-primary">Votre panier</span>
-            <span class="badge bg-primary rounded-pill cursor-pointer" id="deleteButton">Vider le panier</span>
-            <span class="badge bg-primary rounded-pill product-quantity">Total nombre d'articles: 
+            <span
+              class="badge bg-primary rounded-pill cursor-pointer"
+              id="deleteButton"
+              >Vider le panier</span
+            >
+            <span class="badge bg-primary rounded-pill product-quantity"
+              >Nb d'articles:
               <span class="nombre_article"></span>
             </span>
           </h4>
@@ -99,9 +132,7 @@
           </p>
 
           <ul class="list-group mb-3">
-
-            <li class="products">
-            </li>
+            <li class="products"></li>
             <!--<li class="list-group-item d-flex justify-content-between lh-sm">
               <div>
                 <h6 class="my-0">NOM DU PRODUIT</h6>
@@ -109,43 +140,66 @@
               </div>
               <span class="text-muted">PRIX PRODUIT</span>
             </li> -->
-           
+
             <li class="list-group-item d-flex justify-content-between">
               <span>Prix total</span>
               <strong class="total"></strong>
             </li>
           </ul>
-  
         </div>
         <div class="col-md-7 col-lg-8">
           <h4 class="mb-3">Informations de contact</h4>
 
-          <form class="needs-validation" id="form" name="myForm" method="POST" novalidate>
-
+          <form
+            class="needs-validation"
+            id="form"
+            name="myForm"
+            method="POST"
+            novalidate
+          >
             <div class="row g-3">
-
               <div class="col-sm-6">
-                <label for="firstName" class="form-label">Prénom</label>
-                <input type="text" id="fname"  class="form-control" placeholder="Prénom">
+                <label class="form-label">Prénom</label>
+                <input
+                  type="text"
+                  id="fname"
+                  class="form-control"
+                  placeholder="Prénom"
+                />
               </div>
 
               <div class="col-sm-6">
-                <label for="lastName" class="form-label">Nom</label>
-                <input type="text" id="flastname"  class="form-control" placeholder="Nom">
+                <label class="form-label">Nom</label>
+                <input
+                  type="text"
+                  id="flastname"
+                  class="form-control"
+                  placeholder="Nom"
+                />
               </div>
 
               <div class="col-12">
-                <label for="email" class="form-label">Email</label>
-                <input type="email" id="femail"  class="form-control" placeholder="jean.dupont@exemple.com">
+                <label class="form-label">Email</label>
+                <input
+                  type="email"
+                  id="femail"
+                  class="form-control"
+                  placeholder="jean.dupont@exemple.com"
+                />
               </div>
 
               <div class="col-12">
-                <label for="address" class="form-label">Adresse de livraison</label>
-                <input type="text" id="faddress"  class="form-control" placeholder="8 rue des Lilas">
+                <label class="form-label">Adresse de livraison</label>
+                <input
+                  type="text"
+                  id="faddress"
+                  class="form-control"
+                  placeholder="8 rue des Lilas"
+                />
               </div>
 
               <div class="col-md-5">
-                <label for="country" class="form-label">Pays</label>
+                <label class="form-label">Pays</label>
                 <select class="form-select" id="fcountry">
                   <option value="">Choisir</option>
                   <option>France</option>
@@ -155,7 +209,7 @@
               </div>
 
               <div class="col-md-4">
-                <label for="city" class="form-label">Ville</label>
+                <label class="form-label">Ville</label>
                 <select class="form-select" id="fcity">
                   <option value="">Choisir</option>
                   <option>Paris</option>
@@ -166,75 +220,141 @@
               </div>
 
               <div class="col-md-3">
-                <label for="zip" class="form-label">Code postal</label>
-                <input type="text" class="form-control" id="fzip" placeholder="75000" required pattern="[0-9]{5}">
+                <label class="form-label">Code postal</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="fzip"
+                  placeholder="75000"
+                  required
+                  pattern="[0-9]{5}"
+                />
               </div>
-  
-            <hr class="my-4">
-  
-            <div class="form-check">
-              <input type="checkbox" class="form-check-input" id="same-address">
-              <label class="form-check-label" for="same-address">Mon adresse de livraison est la même que mon adresse de facturation.</label>
-            </div>
-  
-            <div class="form-check">
-              <input type="checkbox" class="form-check-input" id="save-info">
-              <label class="form-check-label" for="save-info">Garder mes informations pour la prochaine fois.</label>
-            </div>
-  
-            <hr class="my-4">
-  
-            <h4 class="mb-3">Paiement</h4>
-  
-            <div class="my-3">
+
+              <hr class="my-4" />
+
               <div class="form-check">
-                <input id="credit" name="paymentMethod" type="radio" class="form-check-input" checked required>
-                <label class="form-check-label" for="credit">Credit card</label>
+                <input
+                  type="checkbox"
+                  class="form-check-input"
+                  id="same-address"
+                />
+                <label class="form-check-label" for="same-address"
+                  >Mon adresse de livraison est la même que mon adresse de
+                  facturation.</label
+                >
               </div>
+
               <div class="form-check">
-                <input id="paypal" name="paymentMethod" type="radio" class="form-check-input" required>
-                <label class="form-check-label" for="paypal">PayPal</label>
+                <input
+                  type="checkbox"
+                  class="form-check-input"
+                  id="save-info"
+                />
+                <label class="form-check-label" for="save-info"
+                  >Garder mes informations pour la prochaine fois.</label
+                >
               </div>
+
+              <hr class="my-4" />
+
+              <h4 class="mb-3">Paiement</h4>
+
+              <div class="my-3">
+                <div class="form-check">
+                  <input
+                    id="credit"
+                    name="paymentMethod"
+                    type="radio"
+                    class="form-check-input"
+                    checked
+                    required
+                  />
+                  <label class="form-check-label" for="credit"
+                    >Credit card</label
+                  >
+                </div>
+                <div class="form-check">
+                  <input
+                    id="paypal"
+                    name="paymentMethod"
+                    type="radio"
+                    class="form-check-input"
+                    required
+                  />
+                  <label class="form-check-label" for="paypal">PayPal</label>
+                </div>
+              </div>
+
+              <div class="row gy-3">
+                <div class="col-md-6">
+                  <label for="cc-name" class="form-label"
+                    >Nom du propriétaire de la carte</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="cc-name"
+                    placeholder=""
+                    required
+                  />
+                  <small class="text-muted"
+                    >Le nom tel qu'il est écrit sur la carte.</small
+                  >
+                  <div class="invalid-feedback">
+                    Le champ nom sur la carte doit être renseigné.
+                  </div>
+                </div>
+
+                <div class="col-md-6">
+                  <label for="cc-number" class="form-label"
+                    >Numéro de carte</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="cc-number"
+                    placeholder=""
+                    required
+                  />
+                  <div class="invalid-feedback">
+                    Le champ date d'expiration doit être renseigné.
+                  </div>
+                </div>
+
+                <div class="col-md-3">
+                  <label for="cc-expiration" class="form-label"
+                    >Date d'expiration</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="cc-expiration"
+                    placeholder=""
+                    required
+                  />
+                </div>
+
+                <div class="col-md-3">
+                  <label for="cc-cvv" class="form-label">CVV</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="cc-cvv"
+                    placeholder=""
+                    required
+                  />
+                </div>
+              </div>
+
+              <hr class="my-4" />
+
+              <input
+                class="w-100 btn btn-primary btn-lg"
+                type="submit"
+                value="Valider la commande"
+              />
             </div>
-  
-            <div class="row gy-3">
-              <div class="col-md-6">
-                <label for="cc-name" class="form-label">Nom du propriétaire de la carte</label>
-                <input type="text" class="form-control" id="cc-name" placeholder="" required>
-                <small class="text-muted">Le nom tel qu'il est écrit sur la carte.</small>
-                <div class="invalid-feedback">
-                  Le champ nom sur la carte doit être renseigné.
-                </div>
-              </div>
-  
-              <div class="col-md-6">
-                <label for="cc-number" class="form-label">Numéro de carte</label>
-                <input type="text" class="form-control" id="cc-number" placeholder="" required>
-                <div class="invalid-feedback">
-                  Le champ date d'expiration doit être renseigné.
-                </div>
-              </div>
-  
-              <div class="col-md-3">
-                <label for="cc-expiration" class="form-label">Date d'expiration</label>
-                <input type="text" class="form-control" id="cc-expiration" placeholder="" required>
-                <div class="invalid-feedback">
-                  Le champ date d'expiration doit être renseigné.
-                </div>
-              </div>
-  
-              <div class="col-md-3">
-                <label for="cc-cvv" class="form-label">CVV</label>
-                <input type="text" class="form-control" id="cc-cvv" placeholder="" required>
-                <div class="invalid-feedback">
-                  Le champ code de sécurité doit être renseigné.
-                </div>
-              </div>
-            </div>
-  
-            <hr class="my-4">
-  
-            <input class="w-100 btn btn-primary btn-lg" type="submit" value="Valider la commande"></input>
           </form>
         </div>
       </div>
@@ -244,11 +364,26 @@
       <div class="container py-5">
         <div class="row">
           <div class="col-lg-3 mb-3">
-            <a class="d-inline-flex align-items-center mb-2 link-dark text-decoration-none" href="/" aria-label="Bootstrap">
+            <a
+              class="
+                d-inline-flex
+                align-items-center
+                mb-2
+                link-dark
+                text-decoration-none
+              "
+              href="/"
+              aria-label="Bootstrap"
+            >
               <span class="fs-5">Orinoco</span>
             </a>
             <ul class="list-unstyled small text-muted">
-              <li class="mb-2">Orinoco est une entreprise française de commerce en ligne. Elle revendique aujourd'hui plus de 100 millions de produits référencés proposés à la vente dans les univers de la maison, du high-tech, du loisir et de la mode.</li>
+              <li class="mb-2">
+                Orinoco est une entreprise française de commerce en ligne. Elle
+                revendique aujourd'hui plus de 100 millions de produits
+                référencés proposés à la vente dans les univers de la maison, du
+                high-tech, du loisir et de la mode.
+              </li>
             </ul>
           </div>
           <div class="col-6 col-lg-2 offset-lg-1 mb-3">
@@ -261,27 +396,26 @@
               <li class="mb-2"><a href="#">Carte cadeau</a></li>
             </ul>
           </div>
-          </div>
         </div>
       </div>
     </footer>
 
- 
     <script src="pageproduit_test.js" defer></script>
     <script src="pagepanier.js" defer></script>
-
-    
 
     <!-- Optional JavaScript; choose one of the two! -->
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8"
+      crossorigin="anonymous"
+    ></script>
 
     <!-- Option 2: Separate Popper and Bootstrap JS -->
     <!--
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.min.js" integrity="sha384-lpyLfhYuitXl2zRZ5Bn2fqnhNAKOAaM/0Kr9laMspuaMiZfGmfwRNFh8HlMy49eQ" crossorigin="anonymous"></script>
     -->
-    
-</body>
+  </body>
 </html>

@@ -27,10 +27,12 @@
 #id_article {
   display: none;
 }
+
 li {
   list-style-type: none;
 }
-.cursor-pointer{
+
+.cursor-pointer {
   cursor: pointer;
 }
 
