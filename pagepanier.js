@@ -12,6 +12,7 @@ document.querySelector('#form').addEventListener('submit', function validateForm
         let cartItems = localStorage.getItem("productsInCart");
         cartItems = JSON.parse(cartItems);
 
+        // Création d'un objet que l'on enverra en POST, contenant les informations du formulaire de contact et les IDs des produits
         const order = {
             contact: {
                 firstName: document.querySelector('#fname').value,
@@ -23,6 +24,7 @@ document.querySelector('#form').addEventListener('submit', function validateForm
             products: Object.keys(cartItems),
         }
         console.log(order);
+        // Option du fetch, afin de préciser la méthode d'envoi (POST), les données à envoyer ci-dessus et des header afin de préciser que le contenu envoyé est du JSON
         const requestOptions = {
             method: 'POST',
             body: JSON.stringify(order),
@@ -33,6 +35,7 @@ document.querySelector('#form').addEventListener('submit', function validateForm
         fetch("http://localhost:3000/api/" + categorie + "/order", requestOptions)
             .then((response) => response.json())
             .then((resultData) => {
+                // Suppression de toutes les informations contenues dans le local storage et redirection sur la page de confirmation
                 console.log(resultData);
                 localStorage.removeItem('productsInCart');
                 localStorage.removeItem('nombre_articles_ajoutes');

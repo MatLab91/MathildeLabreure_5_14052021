@@ -36,9 +36,6 @@ function findProduct(url, textOption, option) {
               <option value="">${textOption}</option>
               ${item[option].map(itemOption => `<option>${itemOption}</option>`).join("")}
             </select>
-            <div class="invalid-feedback">
-              Veuillez choisir une option.
-            </div>
             <a class="btn my-2 add-cart ${classDisplayCart}">Ajouter au panier</a>
             <p class="${classDisplayText}">Vous avez déjà ajouté un produit d'une autre catégorie.</p>
             <a href="panier.html" class="btn my-2">Voir mon panier</a>
@@ -95,10 +92,11 @@ function ajoutAuPanier() {
 function definieArticle() {
   localStorage.setItem("categorie", categorie);
   let cartItems = localStorage.getItem("productsInCart");
+  // Transformation de la chaîne de caractères en tableau contenant les produits afin d'effectuer les manipulations ci-dessous
   cartItems = JSON.parse(cartItems);
-
+  // Si le panier n'est pas vide
   if (cartItems != null) {
-
+    // Le produit n'existe pas dans le panier
     if (cartItems[product._id] == undefined) {
       cartItems = {
         ...cartItems,
@@ -106,10 +104,10 @@ function definieArticle() {
           property: document.querySelector('#property').value,
           quantity: 1,
           product: product,
-          name: name,
         }],
       }
     } else {
+      // Le produit existe. Modification de sa quantité en fonction de sa propriété (couleur, vernis ou lentille)
       const property = document.querySelector('#property').value
       let property_updated = false;
       cartItems[product._id].forEach((item) => {
@@ -119,6 +117,7 @@ function definieArticle() {
         }
       })
       if (property_updated == false) {
+        // Le produit existe mais pas dans la propriété choisie (couleur, vernis ou lentille)
         cartItems[product._id] = [
           ...cartItems[product._id],
           {
@@ -130,6 +129,7 @@ function definieArticle() {
       }
     }
   } else {
+    // Le panier est vide, ajout du premier produit
     cartItems = {
       [product._id]: [{
         property: document.querySelector('#property').value,
@@ -140,10 +140,13 @@ function definieArticle() {
   }
   console.log(cartItems);
   console.log(product);
+  // On transforme le tableau contenant les produits en chaîne de caractères afin de le stocker dans le local storage.
   localStorage.setItem("productsInCart", JSON.stringify(cartItems));
 }
 
 // Lorsque l'utilisateur clique sur le bouton ajouter au panier, l'article est ajouté au panier avec la fonction ajoutAuPanier
+// Le bouton "Ajouter au panier" étant contenu dans le HTML de retour de la fonction fetch (asynchrone) de récupération du produit
+// On ajoute un addEventListener sur le document, puis on vérifie si le clic s'est bien fait sur le bouton "Ajouter au panier"
 document.addEventListener('click', function (event) {
   const element = event.target;
   if (element.tagName == 'A' && element.classList.contains("add-cart")) {
