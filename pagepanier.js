@@ -10,6 +10,11 @@ document.querySelector('#form').addEventListener('submit', function validateForm
     if (validateFormOrder()) {
 
         let cartItems = localStorage.getItem("productsInCart");
+        
+        if (cartItems == null) {
+            alert("Votre panier est vide, vous ne pouvez pas passer de commande. Veuillez ajouter au moins un article.");
+        }
+
         cartItems = JSON.parse(cartItems);
 
         // Création d'un objet que l'on enverra en POST, contenant les informations du formulaire de contact et les IDs des produits
@@ -23,6 +28,7 @@ document.querySelector('#form').addEventListener('submit', function validateForm
             },
             products: Object.keys(cartItems),
         }
+
         console.log(order);
         // Option du fetch, afin de préciser la méthode d'envoi (POST), les données à envoyer ci-dessus et des header afin de préciser que le contenu envoyé est du JSON
         const requestOptions = {
